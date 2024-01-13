@@ -1,4 +1,4 @@
-let input = document.getElementById("input");
+dlet input = document.getElementById("input");
 let Btn = document.getElementById("search-Btn");
 
 Btn.addEventListener("click", () => {
@@ -14,29 +14,29 @@ Btn.addEventListener("click", () => {
 function displayMovies(movies) {
   // Get the container element where you want to display the movies
   let dataContainer = document.getElementById("data");
-
+  let html = "";
   // Clear the previous content in the container
   dataContainer.innerHTML = "";
 
   // Loop through the array of movies
   movies.forEach((movie) => {
     // Create a new div element for each movie
-    let movieDiv = document.createElement("div");
-    movieDiv.classList.add("movie");
 
     // Create HTML content for the movie (you can customize this based on your data)
     let movieHTML = `
+    <div class="movie>
     <h2>${movie.Title}</h2>
     <p>Year: ${movie.Year}</p>
     <p>Type: ${movie.Type}</p>
     <img src="${movie.Poster}" alt="${movie.Title} Poster" />
     <button class="addToWatchlistBtn">Add to Watchlist</button>
+    </div>
   `;
 
     // Set the HTML content for the movie div
-    movieDiv.innerHTML = movieHTML;
+    html += movieHTML;
 
     // Append the movie div to the container
-    dataContainer.appendChild(movieDiv);
   });
+  dataContainer.innerHTML = html;
 }
