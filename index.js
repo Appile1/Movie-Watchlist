@@ -1,5 +1,6 @@
 let input = document.getElementById("input");
 let Btn = document.getElementById("search-Btn");
+let WatchlistArray = [];
 
 Btn.addEventListener("click", () => {
   fetch(`http://www.omdbapi.com/?i=tt3896198&apikey=e3e0384d&s=${input.value}`)
@@ -21,27 +22,49 @@ function displayMovies(movies) {
 
   // Loop through the array of movies
   movies.forEach((movie) => {
-    // Create a new div element for each movie
-
     // Create HTML content for the movie (you can customize this based on your data)
     let movieHTML = `
-<div class="movie">
-
-    <img class="movie-poster" src="${movie.Poster}" />
-    <div>
-    <h3>${movie.Title} <h3>
-    <p>${movie.Year} <p>
-
-    <button class="Watchlist-btn">Add to Watchlist </button>
-    </div>
- </div>
-
-  `;
+      <div class="movie">
+        <img class="movie-poster" src="${movie.Poster}" />
+        <div>
+          <h3>${movie.Title}</h3>
+          <p>${movie.Year}</p>
+          <button class="Watchlist-btn" data-imdbid="${movie.imdbID}">Add to Watchlist</button>
+        </div>
+      </div>
+    `;
 
     // Set the HTML content for the movie div
     html += movieHTML;
-
-    // Append the movie div to the container
   });
+
+  // Append the movie divs to the container
   dataContainer.innerHTML = html;
+
+  // Add event listener for the "Add to Watchlist" button inside the displayMovies function
+  movies.forEach((movie) => {
+    let addToWatchlistBtn = dataContainer.querySelector(
+      `[data-imdbid="${movie.imdbID}"]`
+    );
+    addToWatchlistBtn.addEventListener("click", () => {
+      // Get the IMDb ID of the clicked movie
+      const imdbID = addToWatchlistBtn.getAttribute("data-imdbid");
+
+      // Check if the movie is not already in the watchlist
+      if (!WatchlistArray.find((item) => item.imdbID === imdbID)) {
+        // Add the movie to the watchlist array
+        WatchlistArray.push({
+          imdbID: imdbID,
+          title: movie.Title,
+          year: movie.Year,
+          poster: movie.Poster,
+        });
+
+        // You can update the UI or perform any additional actions here
+        console.log(`Added movie with IMDb ID ${imdbID} to the watchlist`);
+      } else {
+        console.log(`Movie with IMDb ID ${imdbID} is already in the watchlist`);
+      }
+    });
+  });
 }

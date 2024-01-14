@@ -11,6 +11,7 @@ body {
   align-items: center;
   height: 400px;
   background-size: cover;
+  background-position: center;
 }
 .header h1 {
   margin-top: 0;
