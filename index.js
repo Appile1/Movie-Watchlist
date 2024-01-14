@@ -2,12 +2,11 @@ let input = document.getElementById("input");
 let Btn = document.getElementById("search-Btn");
 let WatchlistArray = [];
 let Movies;
+
 Btn.addEventListener("click", () => {
   fetch(`http://www.omdbapi.com/?i=tt3896198&apikey=e3e0384d&s=${input.value}`)
     .then((res) => res.json())
     .then((data) => {
-      console.log(data.Search);
-      console.log(data);
       Movies = data.Search;
       displayMovies(Movies);
     });
@@ -52,13 +51,17 @@ function displayMovies(movies) {
     if (!WatchlistArray.find((item) => item.imdbID === imdbID)) {
       // Add the movie to the watchlist array
       const movie = Movies.find((x) => x.imdbID === imdbID);
-      console.log(movie);
-      WatchlistArray.push(movie);
-      updateWatchlistUI(WatchlistArray);
-      // You can update the UI or perform any additional actions here
-      console.log(`Added movie with IMDb ID ${imdbID} to the watchlist`);
-    } else {
-      console.log(`Movie with IMDb ID ${imdbID} is already in the watchlist`);
+      if (localStorage.getItem("watchlist")) {
+        let watchlistNewArray = JSON.parse(localStorage.getItem("watchlist"));
+        watchlistNewArray.push(movie);
+        localStorage.setItem("watchlist", JSON.stringify(watchlistNewArray));
+      } else {
+        WatchlistArray.push(movie);
+        localStorage.setItem("watchlist", JSON.stringify(WatchlistArray));
+      }
+
+      updateWatchlistUI();
+      // You can update the UI or perform any additional actions her
     }
   });
 }
