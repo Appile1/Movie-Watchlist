@@ -17,21 +17,5 @@ body {
 .header h1 {
   margin-top: 0;
 }
-
-.movie {
-  display: flex;
-  margin-left: 1.5em;
-  margin-top: 2em;
-  column-gap: 1em;
-}
-.movie-poster {
-  width: 200px;
-  height: 300px;
-  object-fit: cover;
-}
-.flex {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 2em;
+.header a {
 }
