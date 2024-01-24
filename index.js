@@ -3,6 +3,10 @@ let input = document.getElementById("input");
 let Btn = document.getElementById("search-Btn");
 let Movies;
 
+function savetoLocalStorage() {
+  localStorage.setItem("WATCHLIST", JSON.stringify(WatchlistArray));
+}
+
 Btn.addEventListener("click", () => {
   fetch(`http://www.omdbapi.com/?i=tt3896198&apikey=e3e0384d&s=${input.value}`)
     .then((res) => res.json())
@@ -47,7 +51,7 @@ function displayMovies(movies) {
       if (!WatchlistArray.find((x) => x.imdbID === imdbID)) {
         let selectedMovie = movies.find((x) => imdbID === x.imdbID);
         WatchlistArray.unshift(selectedMovie);
-        console.log(WatchlistArray);
+        savetoLocalStorage();
       }
     });
   });

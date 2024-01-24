@@ -1,1 +1,1 @@
-export let WatchlistArray = [];
+export let WatchlistArray = JSON.parse(localStorage.getItem("WATCHLIST")) || [];
