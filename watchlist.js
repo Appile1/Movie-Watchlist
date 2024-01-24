@@ -1,4 +1,4 @@
-import { WatchlistArray } from "./watchlistArray.js";
+import { WatchlistArray, RemoveMovie } from "./watchlistArray.js";
 
 function updateWatchlistUI() {
   // Update the watchlist UI here (e.g., display the watchlist in a separate section)
@@ -18,7 +18,7 @@ function updateWatchlistUI() {
       <div>
         <h3>${movie.Title}</h3>
         <p>${movie.Year}</p>
-        <button class="Watchlist-btn" data-imdbid="${movie.imdbID}">Add to Watchlist</button>
+        <button class="delete-btn" data-imdbid="${movie.imdbID}">Remove</button>
       </div>
     </div>
         `;
@@ -26,5 +26,13 @@ function updateWatchlistUI() {
 
     watchlistContainer.innerHTML = watchlistHTML;
   }
+
+  document.querySelectorAll(".delete-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const imdbID = btn.getAttribute("data-imdbid");
+      RemoveMovie(imdbID);
+      updateWatchlistUI();
+    });
+  });
 }
 updateWatchlistUI();
