@@ -1,16 +1,17 @@
+import { WatchlistArray } from "./watchlistArray.js";
+
 function updateWatchlistUI() {
   // Update the watchlist UI here (e.g., display the watchlist in a separate section)
   let watchlistContainer = document.getElementById("watchlist");
   let watchlistHTML = "";
-  let movies = JSON.parse(localStorage.getItem("watchlist")) || [];
-  if (movies.length === 0) {
+  if (WatchlistArray.length === 0) {
     watchlistContainer.innerHTML = `
         <div class='flex'>
           <h3><a href="index.html">Add Movies</a> to Your Playlist</h3>
         </div>
       `;
   } else {
-    movies.forEach((movie) => {
+    WatchlistArray.forEach((movie) => {
       watchlistHTML += `
       <div class="movie">
       <img class="movie-poster" src="${movie.Poster}" />
@@ -26,7 +27,4 @@ function updateWatchlistUI() {
     watchlistContainer.innerHTML = watchlistHTML;
   }
 }
-
-document.addEventListener("DOMContentLoaded", (event) => {
-  updateWatchlistUI();
-});
+updateWatchlistUI();

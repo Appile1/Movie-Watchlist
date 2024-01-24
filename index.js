@@ -1,6 +1,6 @@
+import { WatchlistArray } from "./watchlistArray.js";
 let input = document.getElementById("input");
 let Btn = document.getElementById("search-Btn");
-let WatchlistArray = [];
 let Movies;
 
 Btn.addEventListener("click", () => {
@@ -41,27 +41,14 @@ function displayMovies(movies) {
   dataContainer.innerHTML = html;
 
   // Add event listener for the "Add to Watchlist" button inside the displayMovies function
-
-  let addToWatchlistBtn = dataContainer.querySelector(".Watchlist-btn");
-  addToWatchlistBtn.addEventListener("click", () => {
-    // Get the IMDb ID of the clicked movie
-    const imdbID = addToWatchlistBtn.getAttribute("data-imdbid");
-
-    // Check if the movie is not already in the watchlist
-    if (!WatchlistArray.find((item) => item.imdbID === imdbID)) {
-      // Add the movie to the watchlist array
-      const movie = Movies.find((x) => x.imdbID === imdbID);
-      if (localStorage.getItem("watchlist")) {
-        let watchlistNewArray = JSON.parse(localStorage.getItem("watchlist"));
-        watchlistNewArray.push(movie);
-        localStorage.setItem("watchlist", JSON.stringify(watchlistNewArray));
-      } else {
-        WatchlistArray.push(movie);
-        localStorage.setItem("watchlist", JSON.stringify(WatchlistArray));
+  document.querySelectorAll(".Watchlist-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const imdbID = btn.getAttribute("data-imdbid");
+      if (!WatchlistArray.find((x) => x.imdbID === imdbID)) {
+        let selectedMovie = movies.find((x) => imdbID === x.imdbID);
+        WatchlistArray.unshift(selectedMovie);
+        console.log(WatchlistArray);
       }
-
-      updateWatchlistUI();
-      // You can update the UI or perform any additional actions her
-    }
+    });
   });
 }
