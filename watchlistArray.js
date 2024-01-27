@@ -1,4 +1,4 @@
-export let WatchlistArray = JSON.parse(localStorage.getItem("WATCHLIST")) || [];
+export let WatchlistArray = JSON.parse(localStorage.getItem("data")) || [];
 
 export function RemoveMovie(id) {
   let cart = WatchlistArray.filter((x) => {

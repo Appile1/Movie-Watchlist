@@ -1,4 +1,5 @@
 import { WatchlistArray, RemoveMovie } from "./watchlistArray.js";
+import { savetoLocalStorage } from "./utilites.js";
 
 function updateWatchlistUI() {
   // Update the watchlist UI here (e.g., display the watchlist in a separate section)
@@ -32,6 +33,7 @@ function updateWatchlistUI() {
       const imdbID = btn.getAttribute("data-imdbid");
       RemoveMovie(imdbID);
       updateWatchlistUI();
+      savetoLocalStorage(WatchlistArray);
     });
   });
 }
