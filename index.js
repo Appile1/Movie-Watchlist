@@ -11,6 +11,7 @@ Btn.addEventListener("click", () => {
       Movies = data.Search;
       displayMovies(Movies);
     });
+  input.value = "";
 });
 
 function displayMovies(movies) {
@@ -23,16 +24,22 @@ function displayMovies(movies) {
   // Loop through the array of movies
   movies.forEach((movie) => {
     // Create HTML content for the movie (you can customize this based on your data)
-    let movieHTML = `
-      <div class="movie">
-        <img class="movie-poster" src="${movie.Poster}" />
-        <div>
-          <h3>${movie.Title}</h3>
-          <p>${movie.Year}</p>
-          <button class="Watchlist-btn" data-imdbid="${movie.imdbID}">Add to Watchlist</button>
+    let movieHTML = `<div class="movie">
+    <img class="movie-poster" src="${movie.Poster}" />
+    <div class="movie-details">
+      <div class="movie-info">
+        <h3>${movie.Title}</h3>
         </div>
+        <p class="rating">Rating: 10/</p>
+        <div class="movie-meta">
+        <p>${movie.Year}</p>
+        <p>Genres: </p>
+        <button class="Watchlist-btn" data-imdbid="${movie.imdbID}">Add to Watchlist</button>
       </div>
-    `;
+      <p>Description</p>
+    </div>
+  </div>
+  `;
 
     // Set the HTML content for the movie div
     html += movieHTML;

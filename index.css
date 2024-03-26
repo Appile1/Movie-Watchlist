@@ -1,8 +1,15 @@
+/* Global styles */
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: Inter;
   padding: 0;
   margin: 0;
 }
+
+/* Header styles */
 .header {
   background-image: url("image\ 36.png");
   background-repeat: no-repeat;
@@ -13,49 +20,104 @@ body {
   background-size: cover;
   background-position: center;
 }
+
 .header h1 {
   margin-top: 0;
   font-size: 3rem;
 }
+
+/* Input section styles */
 .input {
   display: flex;
   justify-content: center;
 }
+
 .input input {
-  height: 40px;
-  padding: 0.3em 0.5em;
+  height: 50px;
+  padding: 0.5em;
   border-radius: 5px;
-  width: 40%;
-  background-color: #9ca3af;
-  color: white;
-  font-size: larger;
-  border-top-right-radius: 0;
-  border-width: 1px;
-  position: sticky;
+  width: 60%;
+  background-color: #f1f3f4;
+  color: #333;
+  font-size: 1.1em;
+  border: none;
+  outline: none;
+  margin-top: 10px;
 }
+
 .input button {
-  padding: 0.3em 0.5em;
-  width: 5%;
+  height: 50px;
+  padding: 0.5em 1em;
+  width: 20%;
   color: white;
-  text-transform: capitalize;
-  border-radius: 3px;
-  border-width: 1px;
-  background-color: #4b4b4b;
+  text-transform: uppercase;
+  border-radius: 5px;
+  border: none;
+  background-color: #007bff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 10px;
 }
-/* .data {
-  background-image: url("Icon.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-color: #a39d9d;
-} */
+
+.input button:hover {
+  background-color: #0056b3;
+}
+
+/* Movie styles */
 .movie {
   display: flex;
   margin-left: 1.5em;
   margin-top: 2em;
   column-gap: 1em;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
 .movie-poster {
   width: 200px;
   height: 300px;
   object-fit: cover;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+.movie-details {
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.movie-info {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 430px;
+}
+
+.movie-meta {
+  display: flex;
+  gap: 2em;
+  justify-content: center;
+  align-items: center;
+  width: 260px;
+}
+
+.movie-meta p {
+}
+
+.movie-meta button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5em 1em;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.movie-meta button:hover {
+  background-color: #0056b3;
 }
