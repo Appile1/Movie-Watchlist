@@ -2,15 +2,29 @@ import { WatchlistArray } from "./watchlistArray.js";
 import { savetoLocalStorage } from "./utilites.js";
 let input = document.getElementById("input");
 let Btn = document.getElementById("search-Btn");
-let Movies;
+let Movies = [];
 
 Btn.addEventListener("click", () => {
   fetch(`http://www.omdbapi.com/?i=tt3896198&apikey=e3e0384d&s=${input.value}`)
     .then((res) => res.json())
     .then((data) => {
+      const DataArray = [];
       Movies = data.Search;
-      displayMovies(Movies);
+
+      data.Search.forEach((movie) => {
+        fetch(`https://www.omdbapi.com/?apikey=e3e0384d&i=${movie.imdbID}`)
+          .then((res) => res.json())
+          .then((data) => DataArray.push(data))
+          .then(() => {
+            // Check if all movies have been fetched
+            if (DataArray.length === Movies.length) {
+              console.log(DataArray);
+              displayMovies(DataArray);
+            }
+          });
+      });
     });
+
   input.value = "";
 });
 
@@ -30,13 +44,13 @@ function displayMovies(movies) {
       <div class="movie-info">
         <h3>${movie.Title}</h3>
         </div>
-        <p class="rating">Rating: 10/</p>
+        <p class="rating">Rating:  ${movie?.Ratings[0]?.Value}</p>
         <div class="movie-meta">
-        <p>${movie.Year}</p>
-        <p>Genres: </p>
+        <p>${movie.Runtime}</p>
+        <p>${movie.Genre}  </p>
         <button class="Watchlist-btn" data-imdbid="${movie.imdbID}">Add to Watchlist</button>
       </div>
-      <p>Description</p>
+      <p>Description : ${movie.Plot}</p>
     </div>
   </div>
   `;
