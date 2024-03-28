@@ -19,18 +19,60 @@ body {
 }
 .movie {
   display: flex;
-  margin-left: 1.5em;
-  margin-top: 2em;
-  column-gap: 1em;
+  margin: 20px auto;
+  max-width: 800px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
 .movie-poster {
   width: 200px;
   height: 300px;
   object-fit: cover;
+  border-radius: 8px 0 0 8px;
 }
-.flex {
+
+.movie-details {
+  padding: 20px;
+  flex: 1;
+}
+
+.movie-details h3 {
+  margin: 0 0 10px;
+  font-size: 1.5em;
+  color: #333;
+}
+
+.movies-data {
   display: flex;
-  justify-content: center;
   align-items: center;
-  font-size: 2em;
+  margin-bottom: 10px;
+  width: 200px;
+  justify-content: space-between;
+  margin-top: 1.5em;
+}
+
+.movies-data p {
+  margin: 0;
+  font-size: 0.9em;
+  color: #555;
+}
+
+.delete-btn {
+  background-color: #ff6347;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.delete-btn:hover {
+  background-color: #e74c3c;
+}
+.rating {
+  margin-bottom: 1.6em;
+  margin-top: 1.5em;
 }

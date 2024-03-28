@@ -13,15 +13,22 @@ function updateWatchlistUI() {
       `;
   } else {
     WatchlistArray.forEach((movie) => {
-      watchlistHTML += `
-      <div class="movie">
-      <img class="movie-poster" src="${movie.Poster}" />
-      <div>
+      watchlistHTML += `<div class="movie">
+      <img class="movie-poster" src="${movie.Poster}" alt="${movie.Title} Poster" />
+      <div class="movie-details">
         <h3>${movie.Title}</h3>
-        <p>${movie.Year}</p>
-        <button class="delete-btn" data-imdbid="${movie.imdbID}">Remove</button>
+        <div class="movies-data">
+          <p>${movie.Year}</p>
+          <p>Genres:</p>
+          <!-- Add genres dynamically based on movie data -->
+          <button class="delete-btn" data-imdbid="${movie.imdbID}">Remove</button>
+        </div>
+        <p class="rating">Rating : 10 /  </p>
+        <p>Description:</p>
+        <!-- Add movie description dynamically based on movie data -->
       </div>
     </div>
+    
         `;
     });
 
