@@ -18,13 +18,13 @@ function updateWatchlistUI() {
       <div class="movie-details">
         <h3>${movie.Title}</h3>
         <div class="movies-data">
-          <p>${movie.Runtime}</p>
-          <p>${movie.Genre}</p>
+          <p><strong>Runtime:</strong> ${movie.Runtime}</p>
+          <p><strong>Genres:</strong><span class="genre">${movie.Genre}</span></p>
           <!-- Add genres dynamically based on movie data -->
           <button class="delete-btn" data-imdbid="${movie.imdbID}">Remove</button>
         </div>
-        <p class="rating">Rating ${movie?.Ratings[0]?.Value}  </p>
-        <p>Description:  ${movie.Plot} </p>
+        <p class="rating"><strong>Rating:</strong> ${movie?.Ratings[0]?.Value}</p>
+        <p><strong>Description:</strong> ${movie.Plot}</p>
         <!-- Add movie description dynamically based on movie data -->
       </div>
     </div>

@@ -43,16 +43,17 @@ function displayMovies(movies) {
     <div class="movie-details">
       <div class="movie-info">
         <h3>${movie.Title}</h3>
-        </div>
-        <p class="rating">Rating:  ${movie?.Ratings[0]?.Value}</p>
-        <div class="movie-meta">
-        <p>${movie.Runtime}</p>
-        <p>${movie.Genre}  </p>
+      </div>
+      <p class="rating"><strong>Rating:</strong> ${movie?.Ratings[0]?.Value}</p>
+      <div class="movie-meta">
+        <p><strong>Runtime:</strong> ${movie.Runtime}</p>
+        <p class="genre"><strong>Genre:</strong> ${movie.Genre}</p>
         <button class="Watchlist-btn" data-imdbid="${movie.imdbID}">Add to Watchlist</button>
       </div>
-      <p>Description : ${movie.Plot}</p>
+      <p><strong>Description:</strong> ${movie.Plot}</p>
     </div>
   </div>
+  
   `;
 
     // Set the HTML content for the movie div

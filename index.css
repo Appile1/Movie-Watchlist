@@ -73,7 +73,7 @@ body {
   background-color: #f9f9f9;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 60%;
+  width: 80%;
 }
 
 .movie-poster {
@@ -101,12 +101,15 @@ body {
 
 .movie-meta {
   display: flex;
-  gap: 2em;
-  justify-content: center;
-  align-items: center;
-  width: 260px;
-}
 
+  justify-content: space-between;
+  align-items: center;
+  width: 500px;
+}
+.genre {
+  max-width: 160px;
+  margin-left: 1.4em;
+}
 .movie-meta p {
 }
 
